@@ -1,0 +1,15 @@
+<prefixname>/gfx/
+  shortcut_icon/
+    <shortcutname>.png
+      PNG 48 x 48, 128 x 128, 256 x 256
+
+  install_icon/
+    <prefixname>.png
+      PNG 22 x 22 - convertion of game's icon
+
+  setup/
+      top.jpg
+        JPEG 64 x 64
+
+      left.jpg
+        JPEG 150 x 356
