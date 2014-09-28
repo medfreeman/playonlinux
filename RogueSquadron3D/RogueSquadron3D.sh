@@ -1,6 +1,6 @@
 #!/bin/bash
 # Date : (2014-09-18 00:12)
-# Last revision : (2014-09-28 16:43)
+# Last revision : (2014-09-28 17:15)
 # Wine version used : 1.7.26
 # Distribution used to test : Ubuntu 14.04 Trusty x64 + Debian 7.0 Wheezy x64
 # Author : med_freeman
@@ -20,7 +20,7 @@ POL_SetupWindow_Init
 
 POL_Debug_Init
 
-POL_SetupWindow_presentation "$TITLE" "LucasArts" "http://www.starwars.com/games-apps" "$AUTHOR" "$PREFIX"
+POL_SetupWindow_presentation "$TITLE" "LucasArts / Factor 5" "http://www.starwars.com/games-apps" "$AUTHOR" "$PREFIX"
 
 POL_System_SetArch "$WINE_ARCH"
 POL_System_TmpCreate "$PREFIX"
