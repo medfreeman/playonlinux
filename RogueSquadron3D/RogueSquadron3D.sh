@@ -1,6 +1,6 @@
 #!/bin/bash
 # Date : (2014-09-18 00:12)
-# Last revision : (2014-09-28 02:18)
+# Last revision : (2014-09-28 16:43)
 # Wine version used : 1.7.26
 # Distribution used to test : Ubuntu 14.04 Trusty x64 + Debian 7.0 Wheezy x64
 # Author : med_freeman
@@ -30,14 +30,10 @@ POL_Wine_PrefixCreate "$WINE_VERSION"
 POL_SetupWindow_cdrom
 POL_SetupWindow_check_cdrom "rogue/rogue\ squadron.exe"
 
-cd "$HOME"
-POL_SetupWindow_browse "$(eval_gettext 'Please select the new installer executable')" "$TITLE"
-INSTALL_EXE="$APP_ANSWER"
-
 # Downloading installer
-# cd "$POL_System_TmpDir"
-# INSTALL_EXE="RS3DInstaller.exe"
-# POL_Download "http://ftp.oktopod.tv/POL/$PREFIX/installer/$INSTALL_EXE" "MD5SUM"
+cd "$POL_System_TmpDir"
+INSTALL_EXE="RS3DInstaller.exe"
+POL_Download "http://ftp.oktopod.tv/POL/$PREFIX/installer/$INSTALL_EXE" "f936b30fc8962c99d0413f51b36dcfb9"
 
 # Running installer
 POL_Wine_WaitBefore "$TITLE"
