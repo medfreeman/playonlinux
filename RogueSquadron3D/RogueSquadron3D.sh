@@ -1,7 +1,7 @@
 #!/bin/bash
 # Date : (2014-09-18 00:12)
-# Last revision : (2014-09-28 17:15)
-# Wine version used : 1.7.26
+# Last revision : (2014-10-01 13:03)
+# Wine version used : 1.7.24-LeagueOfLegendsCSMT
 # Distribution used to test : Ubuntu 14.04 Trusty x64 + Debian 7.0 Wheezy x64
 # Author : med_freeman
 # Licence : Retail
@@ -11,7 +11,7 @@ source "$PLAYONLINUX/lib/sources"
 
 TITLE="Rogue Squadron 3D"
 PREFIX="RogueSquadron3D"
-WINE_VERSION="1.7.26"
+WINE_VERSION="1.7.24-LeagueOfLegendsCSMT"
 WINE_ARCH="x86"
 AUTHOR="med_freeman"
 
@@ -32,8 +32,8 @@ POL_SetupWindow_check_cdrom "rogue/rogue\ squadron.exe"
 
 # Downloading installer
 cd "$POL_System_TmpDir"
-INSTALL_EXE="RS3DInstaller.exe"
-POL_Download "http://ftp.oktopod.tv/POL/$PREFIX/installer/$INSTALL_EXE" "f936b30fc8962c99d0413f51b36dcfb9"
+INSTALL_EXE="RS3DInstaller-0.9_nglide_102.exe"
+POL_Download "http://ftp.oktopod.tv/POL/$PREFIX/installer/$INSTALL_EXE" "aeeeb44e83c6993d82bd2fe2a8712e2a"
 
 # Running installer
 POL_Wine_WaitBefore "$TITLE"
@@ -49,7 +49,8 @@ POL_Wine_OverrideDLL "native" "dsound"
 Set_Managed "Off"
 POL_Wine_X11Drv "Decorated" "N"
 POL_Wine_X11Drv "GrabFullscreen" "Y"
-POL_Wine_X11Drv "StrictDrawOrdering" "enabled"
+POL_Wine_Direct3D "CSMT" "enabled"
+POL_Wine_X11Drv "StrictDrawOrdering" "disabled"
 Set_OS "win98"
 
 # Shortcuts
