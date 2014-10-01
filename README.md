@@ -1,4 +1,4 @@
 playonlinux
 ===========
 
-Playonlinux scripts
+Scripts for PlayOnLinux gaming platform http://playonlinux.com
