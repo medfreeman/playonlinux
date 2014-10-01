@@ -49,6 +49,7 @@ POL_Wine_OverrideDLL "native" "dsound"
 Set_Managed "Off"
 POL_Wine_X11Drv "Decorated" "N"
 POL_Wine_X11Drv "GrabFullscreen" "Y"
+POL_Wine_X11Drv "StrictDrawOrdering" "enabled"
 Set_OS "win98"
 
 # Shortcuts
