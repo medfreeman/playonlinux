@@ -59,7 +59,7 @@ Set_OS "win98"
 
 # Shortcuts
 POL_Shortcut "ROGUE.exe" "$TITLE"
-POL_Shortcut "windows/system32/nglide_config.exe" "$TITLE - Graphic settings"
+POL_Shortcut "nglide_config.exe" "$TITLE - Graphic settings"
 
 # Set reg file name
 REG_FILE="rs3d.reg"
