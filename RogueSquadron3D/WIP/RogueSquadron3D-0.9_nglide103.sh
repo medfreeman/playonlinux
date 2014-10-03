@@ -36,8 +36,8 @@ POL_SetupWindow_check_cdrom "rogue/rogue\ squadron.exe"
 
 # Downloading installer
 cd "$POL_System_TmpDir"
-INSTALL_EXE="RS3DInstaller-0.9_nglide_103.exe"
-POL_Download "http://github.com/medfreeman/RogueSquadron3DInstaller/raw/master/$INSTALL_EXE" "9edfa2db93946279ad50a2c66475e3d6"
+INSTALL_EXE="RS3DInstaller-0.91_nglide_103.exe"
+POL_Download "http://github.com/medfreeman/RogueSquadron3DInstaller/raw/master/$INSTALL_EXE" "048cbb2323f7d6f58ca4713663d4ce16"
 
 # Running installer
 POL_Wine_WaitBefore "$TITLE"
