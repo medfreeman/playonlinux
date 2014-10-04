@@ -1,7 +1,7 @@
 #!/bin/bash
 # Date : (2014-09-18 00:12)
-# Last revision : (2014-10-01 13:03)
-# Wine version used : 1.7.24-LeagueOfLegendsCSMT
+# Last revision : (2014-10-04 05:37)
+# Wine version used : 1.7.28
 # Distribution used to test : Ubuntu 14.04 Trusty x64 + Debian 7.0 Wheezy x64
 # Author : med_freeman
 # Licence : Retail
@@ -11,11 +11,11 @@ source "$PLAYONLINUX/lib/sources"
 
 TITLE="Rogue Squadron 3D"
 PREFIX="RogueSquadron3D"
-WINE_VERSION="1.7.24-LeagueOfLegendsCSMT"
+WINE_VERSION="1.7.28"
 WINE_ARCH="x86"
 AUTHOR="med_freeman"
 
-POL_GetSetupImages "http://raw.githubusercontent.com/medfreeman/playonlinux/master/RogueSquadron3D/gfx/setup/top.jpg" "http://raw.githubusercontent.com/medfreeman/playonlinux/master/RogueSquadron3D/gfx/setup/left.jpg" "$TITLE"
+POL_GetSetupImages "http://files.playonlinux.com/resources/setups/$PREFIX/top.jpg" "http://files.playonlinux.com/resources/setups/$PREFIX/left.jpg" "$TITLE"
 POL_SetupWindow_Init
 
 POL_Debug_Init
@@ -29,10 +29,6 @@ POL_Wine_PrefixCreate "$WINE_VERSION"
 
 POL_SetupWindow_cdrom
 POL_SetupWindow_check_cdrom "rogue/rogue\ squadron.exe"
-
-# cd "$HOME"
-# POL_SetupWindow_browse "$(eval_gettext 'Please select the new $TITLE installer')" "$TITLE"
-# INSTALL_EXE="$APP_ANSWER"
 
 # Downloading installer
 cd "$POL_System_TmpDir"
@@ -53,8 +49,7 @@ POL_Wine_OverrideDLL "native" "dsound"
 Set_Managed "Off"
 POL_Wine_X11Drv "Decorated" "N"
 POL_Wine_X11Drv "GrabFullscreen" "Y"
-POL_Wine_Direct3D "CSMT" "enabled"
-POL_Wine_X11Drv "StrictDrawOrdering" "disabled"
+POL_Wine_X11Drv "StrictDrawOrdering" "enabled"
 Set_OS "win98"
 
 # Shortcuts
