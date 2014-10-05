@@ -1,6 +1,6 @@
 #!/bin/bash
 # Date : (2014-09-18 00:12)
-# Last revision : (2014-10-04 05:37)
+# Last revision : (2014-10-05 06:15)
 # Wine version used : 1.7.28
 # Distribution used to test : Ubuntu 14.04 Trusty x64 + Debian 7.0 Wheezy x64
 # Author : med_freeman
@@ -32,8 +32,12 @@ POL_SetupWindow_check_cdrom "rogue/rogue\ squadron.exe"
 
 # Downloading installer
 cd "$POL_System_TmpDir"
-INSTALL_EXE="RS3DInstaller-0.91_nglide_103.exe"
-POL_Download "http://github.com/medfreeman/RogueSquadron3DInstaller/raw/master/$INSTALL_EXE" "048cbb2323f7d6f58ca4713663d4ce16"
+INSTALL_EXE="RS3DInstaller-0.92_nglide_103.exe"
+POL_Download "http://github.com/medfreeman/RogueSquadron3DInstaller/raw/master/$INSTALL_EXE" "8af249dc1da2a503796bb7015c96a6e4"
+
+# cd "$HOME"
+# POL_SetupWindow_browse "$(eval_gettext 'Please select the new Rogue Squadron 3D installer executable')" "$TITLE"
+# INSTALL_EXE="$APP_ANSWER"
 
 # Running installer
 POL_Wine_WaitBefore "$TITLE"
@@ -49,29 +53,17 @@ POL_Wine_OverrideDLL "native" "dsound"
 Set_Managed "Off"
 POL_Wine_X11Drv "Decorated" "N"
 POL_Wine_X11Drv "GrabFullscreen" "Y"
-POL_Wine_X11Drv "StrictDrawOrdering" "enabled"
+POL_Wine_Direct3D "StrictDrawOrdering" "enabled"
 Set_OS "win98"
 
 # Shortcuts
 POL_Shortcut "ROGUE.exe" "$TITLE"
 POL_Shortcut "nglide_config.exe" "$TITLE - Graphic settings"
 
-# Set reg file name
-REG_FILE="rs3d.reg"
-# Export registry to file
-regedit /E "$POL_System_TmpDir/$REG_FILE" "HKEY_LOCAL_MACHINE\Software\LucasArts Entertainment Company LLC\Rogue Squadron\v1.0"
-# Get game installation directory
-[ -e "$POL_System_TmpDir/$REG_FILE" ] && GAME_INSTALLDIR="$(grep "Install Path" "$POL_System_TmpDir/$REG_FILE" | head -n 1 | tr -d '"' | cut -d= -f2 | tr -d '\015')"
-
-# Convert it to wine path
-if [ -n "$GAME_INSTALLDIR" ]; then
-    GAME_INSTALLDIR="${GAME_INSTALLDIR/C:\\\\/drive_c/}"
-    GAME_INSTALLDIR="$WINEPREFIX/${GAME_INSTALLDIR//\\\\//}"
-
-    cd "$GAME_INSTALLDIR"
-    POL_Download "http://ftp.oktopod.tv/POL/$PREFIX/manual/Manual.pdf" "bbd6697b86ecad0c033525c1502e38b0"
-    POL_Shortcut_Document "$TITLE" "$GAME_INSTALLDIR/Manual.pdf"
-fi
+GAME_INSTALLDIR="$WINEPREFIX/drive_c/Program Files/LucasArts/ROGUE"
+cd "$GAME_INSTALLDIR"
+POL_Download "http://ftp.oktopod.tv/POL/$PREFIX/manual/Manual.pdf" "bbd6697b86ecad0c033525c1502e38b0"
+POL_Shortcut_Document "$TITLE" "$GAME_INSTALLDIR/Manual.pdf"
 
 POL_SetupWindow_message "$(eval_gettext '$TITLE has been successfully installed.')"
 
