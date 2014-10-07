@@ -6,11 +6,11 @@
 # Author : med_freeman
 # Licence : Retail
 # Only For : http://www.playonlinux.com
-
+ 
 [ "$PLAYONLINUX" = "" ] && exit 0
 source "$PLAYONLINUX/lib/sources"
-
-TITLE="Rayman Forever"
+ 
+TITLE="GOG.com - Rayman Forever"
 PREFIX="RaymanForever_gog"
 GOGID="rayman_forever"
 EDITOR="Ubisoft"
@@ -18,27 +18,25 @@ GAME_URL="http://rayman.ubi.com/legends/"
 AUTHOR="med_freeman"
 WINE_VERSION="1.6.2-dos_support_0.6"
 WINE_ARCH="x86"
-
+ 
 POL_GetSetupImages "http://files.playonlinux.com/resources/setups/$PREFIX/top.jpg" "http://files.playonlinux.com/resources/setups/$PREFIX/left.jpg" "$TITLE"
 POL_SetupWindow_Init
-
+POL_SetupWindow_SetID 2293
+ 
 POL_Debug_Init
-
+ 
 POL_SetupWindow_presentation "$TITLE" "$EDITOR" "$GAME_URL" "$AUTHOR" "$PREFIX"
-
+ 
+# Download / Select GOG setup
+POL_Call POL_GoG_setup "$GOGID" "96e71ea03261646f7f5ce4cb27d6a222"
+ 
 POL_System_SetArch "$WINE_ARCH"
-POL_System_TmpCreate "$PREFIX"
 POL_Wine_SelectPrefix "$PREFIX"
 POL_Wine_PrefixCreate "$WINE_VERSION"
-
-# Install gdiplus, needed for GOG installer
-POL_Call POL_Install_gdiplus
-POL_Wine_OverrideDLL "native" "gdiplus"
-
-# Download / Select and install GOG setup
-POL_Call POL_GoG_setup "$GOGID" "96e71ea03261646f7f5ce4cb27d6a222"
+ 
+# Install GOG setup
 POL_Call POL_GoG_install
-
+ 
 cat <<_EOFCFG_ >> "$WINEPREFIX/playonlinux_dos.cfg"
 manual_mount=true
 dosbox_machine=svga_s3
@@ -59,42 +57,39 @@ sblaster_mixer=true
 sblaster_oplmode=auto
 sblaster_oplrate=22050
 _EOFCFG_
-
+ 
 # cd to game folder
-cd "$GOGROOT/$TITLE"
+cd "$GOGROOT/Rayman Forever"
 # we need this to have the in-game music
 # symlink ogg files down one folder, or mscdex doesn't recognize it
 ln -s Music/*.ogg .
 # edit game.inst to remove ogg paths, save to cue extension or mscdex doesn't recognize it
 sed -e 's/Music\\//g' game.inst > game.cue
-
+ 
 # use dos long dir aliases, fix for mscdex path too long, we need this to have the in-game music
 cat <<_EOFAE_ > "$WINEPREFIX/drive_c/autoexec.bat"
 imgmount E "C:\GOGGAM~1\RAYMAN~1\game.cue" -t cdrom
 _EOFAE_
-
+ 
 # Different games in the installer
 RAYMAN="Rayman"
 RAYMAN_DE="Rayman Designer"
 RAYMAN_DE_MAPPER="Rayman Designer Mapper"
 RAYMAN_FANS="Rayman by His Fans"
-
+ 
 # Rayman
-POL_Shortcut "RAYMAN.EXE" "$RAYMAN" "$RAYMAN" "" "Game;PlatformGame;"
+POL_Shortcut "RAYMAN.EXE" "$RAYMAN" "$RAYMAN.png" "" "Game;PlatformGame;"
 # Rayman Designer
-POL_Shortcut "RAYKIT.EXE" "$RAYMAN_DE" "$RAYMAN_DE" "ver=usa" "Game;PlatformGame;"
+POL_Shortcut "RAYKIT.EXE" "$RAYMAN_DE" "$RAYMAN_DE.png" "ver=usa" "Game;PlatformGame;"
 # Rayman Designer Mapper
 POL_Shortcut "MAPPER.EXE" "$RAYMAN_DE_MAPPER" "" "ver=usa" "Game;PlatformGame;"
 # Rayman by His Fans
-POL_Shortcut "RAYFAN.EXE" "$RAYMAN_FANS" "$RAYMAN_FANS" "ver=usa" "Game;PlatformGame;"
+POL_Shortcut "RAYFAN.EXE" "$RAYMAN_FANS" "$RAYMAN_FANS.png" "ver=usa" "Game;PlatformGame;"
 # Manual
-POL_Shortcut_Document "$RAYMAN" "$GOGROOT/$TITLE/Manual.pdf"
-POL_Shortcut_Document "$RAYMAN_DE" "$GOGROOT/$TITLE/Manual.pdf"
-POL_Shortcut_Document "$RAYMAN_DE_MAPPER" "$GOGROOT/$TITLE/Manual.pdf"
-POL_Shortcut_Document "$RAYMAN_FANS" "$GOGROOT/$TITLE/Manual.pdf"
-
-POL_SetupWindow_message "$(eval_gettext '$TITLE has been successfully installed.')"
-
-POL_System_TmpDelete
+POL_Shortcut_Document "$RAYMAN" "$GOGROOT/Rayman Forever/Manual.pdf"
+POL_Shortcut_Document "$RAYMAN_DE" "$GOGROOT/Rayman Forever/Manual.pdf"
+POL_Shortcut_Document "$RAYMAN_DE_MAPPER" "$GOGROOT/Rayman Forever/Manual.pdf"
+POL_Shortcut_Document "$RAYMAN_FANS" "$GOGROOT/Rayman Forever/Manual.pdf"
+ 
 POL_SetupWindow_Close
 exit 0
