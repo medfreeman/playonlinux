@@ -62,13 +62,16 @@ mv "$PODHACKS_EXE?revision=75" $PODHACKS_EXE
 POL_Wine_WaitBefore "$TITLE"
 POL_Wine start /unix "$PODHACKS_EXE --install"
 POL_Wine_WaitExit "$TITLE"
+
 # Move gog glide 2x so the game can work with nglide
 mv glide2x.dll glide2x_gog.dll
 
+# Shortcuts
 SHORTCUT="POD Gold"
 POL_Shortcut "PODX3Dfx.exe" "$SHORTCUT" "" "" "Game;RacingGame;"
 POL_Shortcut "nglide_config.exe" "$SHORTCUT - Graphic settings"
 POL_Shortcut_Document "$SHORTCUT" "$GAMEDIR/manual.pdf"
- 
+
+POL_System_TmpDelete
 POL_SetupWindow_Close
 exit 0
