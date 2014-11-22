@@ -1,6 +1,6 @@
 #!/bin/bash
-# Date : (2014-10-08 23:39)
-# Date : (2014-10-08 00:36)
+# Date created: (2014-10-08 23:39)
+# Date updated: (2014-11-22 19:39)
 # Wine version used : 1.7.31
 # Distribution used to test : Ubuntu 14.04 Trusty x64 + Debian 7.0 Wheezy x64
 # Author : med_freeman
