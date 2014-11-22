@@ -46,8 +46,6 @@ sed -i '/[drivers32]/a vidc.IV41=ir41_32.dll' $WINEPREFIX/drive_c/windows/system
 # Needed for music
 lame --decode "$GAMEDIR/Track02.mp3"
 
-POL_SetupWindow_question "$(eval_gettext 'Do you want to install nGlide and PodHacks ?\nIt enhances the game graphics and provide compatibility fixes.')" "$TITLE"
-
 # Install nGlide wrapper
 cd "$POL_System_TmpDir"
 NGLIDE_EXE="nGlide103_setup.exe"
