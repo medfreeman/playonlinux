@@ -1,7 +1,7 @@
 #!/bin/bash
 # Date : (2014-09-24 01:30)
-# Last revision : (2014-09-24 02:45)
-# Wine version used : 1.7.14-imm32_bug35361
+# Last revision : (2014-11-22 20:12)
+# Wine version used : 1.7.31
 # Distribution used to test : Ubuntu 14.04 Trusty x64
 # Author : med_freeman (from GNU_Raziel RaymanOrigins)
 # Licence : Retail
@@ -16,7 +16,7 @@ PREFIX="RaymanLegends"
 EDITOR="Ubisoft"
 GAME_URL="http://rayman.ubi.com/legends/"
 AUTHOR="GNU_Raziel + med_freeman"
-WORKING_WINE_VERSION="1.7.14-imm32_bug35361" # Allows steam overlay to work without crash
+WORKING_WINE_VERSION="1.7.31"
 GAME_VMS="512"
  
 # Starting the script
