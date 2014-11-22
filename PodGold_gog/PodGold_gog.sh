@@ -46,28 +46,34 @@ sed -i '/[drivers32]/a vidc.IV41=ir41_32.dll' $WINEPREFIX/drive_c/windows/system
 # Needed for music
 lame --decode "$GAMEDIR/Track02.mp3"
 
-# Install nGlide wrapper
-cd "$POL_System_TmpDir"
-NGLIDE_EXE="nGlide103_setup.exe"
-POL_Download "http://www.zeus-software.com/files/nglide/$NGLIDE_EXE" "938182d383c08e5caaf9a83de13b1f2a"
-POL_Wine_WaitBefore "$TITLE"
-POL_Wine start "$NGLIDE_EXE"
+POL_SetupWindow_question "$(eval_gettext 'Do you want to install nGlide and PodHacks ?\nIt enhances the game graphics and provide compatibility fixes.')" "$TITLE"
 
-# Install PodHacks
-cd "$GAMEDIR"
-PODHACKS_EXE="PodHacks.exe"
-POL_Download "http://svn.nicode.net/podhacks/bin/$PODHACKS_EXE?revision=75" "e7b0e67b2540b69082be015b012d55ed"
-mv "$PODHACKS_EXE?revision=75" $PODHACKS_EXE
-POL_Wine_WaitBefore "$TITLE"
-POL_Wine start "$PODHACKS_EXE --install"
-
-# Move gog glide 2x so the game can work with nglide
-mv glide2x.dll glide2x_gog.dll
+if [ "$APP_ANSWER" == "TRUE" ]; then
+    # Install nGlide wrapper
+    cd "$POL_System_TmpDir"
+    NGLIDE_EXE="nGlide103_setup.exe"
+    POL_Download "http://www.zeus-software.com/files/nglide/$NGLIDE_EXE" "938182d383c08e5caaf9a83de13b1f2a"
+    POL_Wine_WaitBefore "$TITLE"
+    POL_Wine start "$NGLIDE_EXE"
+    
+    # Install PodHacks
+    cd "$GAMEDIR"
+    PODHACKS_EXE="PodHacks.exe"
+    POL_Download "http://svn.nicode.net/podhacks/bin/$PODHACKS_EXE?revision=75" "e7b0e67b2540b69082be015b012d55ed"
+    mv "$PODHACKS_EXE?revision=75" $PODHACKS_EXE
+    POL_Wine_WaitBefore "$TITLE"
+    POL_Wine start "$PODHACKS_EXE --install"
+    
+    # Move gog glide 2x so the game can work with nglide
+    mv glide2x.dll glide2x_gog.dll
+fi
 
 # Shortcuts
 SHORTCUT="POD Gold"
 POL_Shortcut "PODX3Dfx.exe" "$SHORTCUT" "" "" "Game;RacingGame;"
-POL_Shortcut "nglide_config.exe" "$SHORTCUT - Graphic settings"
+if [ "$APP_ANSWER" == "TRUE" ]; then
+    POL_Shortcut "nglide_config.exe" "$SHORTCUT - Graphic settings"
+fi
 POL_Shortcut_Document "$SHORTCUT" "$GAMEDIR/manual.pdf"
 
 POL_System_TmpDelete
