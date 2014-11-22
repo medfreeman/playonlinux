@@ -1,7 +1,7 @@
 #!/bin/bash
 # Date : (2014-10-08 23:39)
 # Date : (2014-10-08 00:36)
-# Wine version used : 1.7.28
+# Wine version used : 1.7.31
 # Distribution used to test : Ubuntu 14.04 Trusty x64 + Debian 7.0 Wheezy x64
 # Author : med_freeman
 # Licence : Retail
@@ -17,7 +17,7 @@ GOGID="pod_gold"
 EDITOR="Ubisoft"
 GAME_URL="http://www.ubi.com"
 AUTHOR="med_freeman"
-WINE_VERSION="1.7.28"
+WINE_VERSION="1.7.31"
 WINE_ARCH="x86"
  
 POL_GetSetupImages "http://files.playonlinux.com/resources/setups/$PREFIX/top.jpg" "http://files.playonlinux.com/resources/setups/$PREFIX/left.jpg" "$TITLE"
