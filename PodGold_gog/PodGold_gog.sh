@@ -22,7 +22,7 @@ WINE_ARCH="x86"
  
 POL_GetSetupImages "http://files.playonlinux.com/resources/setups/$PREFIX/top.jpg" "http://files.playonlinux.com/resources/setups/$PREFIX/left.jpg" "$TITLE"
 POL_SetupWindow_Init
-POL_SetupWindow_SetID 2293
+POL_SetupWindow_SetID 2296
  
 POL_Debug_Init
  
