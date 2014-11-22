@@ -22,6 +22,7 @@ GAME_VMS="512"
 # Starting the script
 POL_GetSetupImages "http://files.playonlinux.com/resources/setups/RaymanLegends/top.jpg" "http://files.playonlinux.com/resources/setups/RaymanLegends/left.jpg" "$TITLE"
 POL_SetupWindow_Init
+POL_SetupWindow_SetID 2283
  
 # Starting debugging API
 POL_Debug_Init
