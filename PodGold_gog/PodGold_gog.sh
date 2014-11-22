@@ -50,8 +50,8 @@ lame --decode "$GAMEDIR/Track02.mp3"
 cd "$POL_System_TmpDir"
 NGLIDE_EXE="nGlide103_setup.exe"
 POL_Download "http://www.zeus-software.com/files/nglide/$NGLIDE_EXE" "938182d383c08e5caaf9a83de13b1f2a"
-POL_Wine_WaitBefore "$TITLE"
-POL_Wine start "$NGLIDE_EXE"
+POL_Wine start /unix "$NGLIDE_EXE"
+POL_Wine_WaitExit "$TITLE"
 
 # Install PodHacks
 cd "$GAMEDIR"
