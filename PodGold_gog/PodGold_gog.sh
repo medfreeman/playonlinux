@@ -51,8 +51,7 @@ cd "$POL_System_TmpDir"
 NGLIDE_EXE="nGlide103_setup.exe"
 POL_Download "http://www.zeus-software.com/files/nglide/$NGLIDE_EXE" "938182d383c08e5caaf9a83de13b1f2a"
 POL_Wine_WaitBefore "$TITLE"
-POL_Wine start /unix "$NGLIDE_EXE"
-POL_Wine_WaitExit "$TITLE"
+POL_Wine start "$NGLIDE_EXE"
 
 # Install PodHacks
 cd "$GAMEDIR"
@@ -60,8 +59,7 @@ PODHACKS_EXE="PodHacks.exe"
 POL_Download "http://svn.nicode.net/podhacks/bin/$PODHACKS_EXE?revision=75" "e7b0e67b2540b69082be015b012d55ed"
 mv "$PODHACKS_EXE?revision=75" $PODHACKS_EXE
 POL_Wine_WaitBefore "$TITLE"
-POL_Wine start /unix "$PODHACKS_EXE --install"
-POL_Wine_WaitExit "$TITLE"
+POL_Wine start "$PODHACKS_EXE --install"
 
 # Move gog glide 2x so the game can work with nglide
 mv glide2x.dll glide2x_gog.dll
