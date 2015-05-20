@@ -1,7 +1,7 @@
 #!/bin/bash
 # Date created: (2014-10-08 23:39)
-# Date updated: (2014-11-22 19:39)
-# Wine version used : 1.7.31
+# Date updated: (2015-05-20 17:48)
+# Wine version used : 1.7.43
 # Distribution used to test : Ubuntu 14.04 Trusty x64 + Debian 7.0 Wheezy x64
 # Author : med_freeman
 # Licence : Retail
@@ -15,15 +15,16 @@ TITLE="GOG.com - POD Gold"
 PREFIX="PodGold_gog"
 GOGID="pod_gold"
 EDITOR="Ubisoft"
-GAME_URL="http://www.ubi.com"
+GAME_URL="http://www.gog.com/game/pod_gold"
 AUTHOR="med_freeman"
-WINE_VERSION="1.7.31"
+WINE_VERSION="1.7.43"
 WINE_ARCH="x86"
  
 POL_GetSetupImages "http://files.playonlinux.com/resources/setups/$PREFIX/top.jpg" "http://files.playonlinux.com/resources/setups/$PREFIX/left.jpg" "$TITLE"
 POL_SetupWindow_Init
 POL_SetupWindow_SetID 2296
- 
+
+which lame || POL_Debug_Fatal "$(eval_gettext 'This install script requires lame')"
 POL_Debug_Init
  
 POL_SetupWindow_presentation "$TITLE" "$EDITOR" "$GAME_URL" "$AUTHOR" "$PREFIX"
@@ -46,12 +47,10 @@ sed -i '/[drivers32]/a vidc.IV41=ir41_32.dll' $WINEPREFIX/drive_c/windows/system
 # Needed for music
 lame --decode "$GAMEDIR/Track02.mp3"
 
-POL_SetupWindow_message "$(eval_gettext 'Setup will now install nGlide and Podhacks, allowing the game to exit properly, providing graphics improvements and compatibility fixes.')" "$TITLE"
-
 # Install nGlide wrapper
 cd "$POL_System_TmpDir"
-NGLIDE_EXE="nGlide103_setup.exe"
-POL_Download "http://www.zeus-software.com/files/nglide/$NGLIDE_EXE" "938182d383c08e5caaf9a83de13b1f2a"
+NGLIDE_EXE="nGlide104_setup.exe"
+POL_Download "http://www.zeus-software.com/files/nglide/$NGLIDE_EXE" "4bcc72be562ad034e5a3690e153ca065"
 POL_Wine start /unix "$NGLIDE_EXE"
 POL_Wine_WaitExit "$TITLE"
 
@@ -61,7 +60,7 @@ PODHACKS_EXE="PodHacks.exe"
 POL_Download "http://svn.nicode.net/podhacks/bin/$PODHACKS_EXE?revision=75" "e7b0e67b2540b69082be015b012d55ed"
 mv "$PODHACKS_EXE?revision=75" $PODHACKS_EXE
 POL_Wine_WaitBefore "$TITLE"
-POL_Wine start "$PODHACKS_EXE --install"
+POL_Wine "$PODHACKS_EXE" "--install"
 
 # Move gog glide 2x so the game can work with nglide
 mv glide2x.dll glide2x_gog.dll
