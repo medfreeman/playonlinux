@@ -1,6 +1,6 @@
 #!/bin/bash
 # Date : (2015-05-29 18:38)
-# Date : (2015-05-29 19:53)
+# Date : (2015-05-29 22:01)
 # Wine version used : 1.6.2-dos_support_0.6
 # Distribution used to test : Ubuntu 14.04 Trusty x64 + Debian 7.0 Wheezy x64
 # Author : med_freeman
@@ -21,7 +21,7 @@ WINE_ARCH="x86"
  
 POL_GetSetupImages "http://files.playonlinux.com/resources/setups/$PREFIX/top.jpg" "http://files.playonlinux.com/resources/setups/$PREFIX/left.jpg" "$TITLE"
 POL_SetupWindow_Init
-#POL_SetupWindow_SetID 2293
+POL_SetupWindow_SetID 2539
  
 POL_Debug_Init
  
